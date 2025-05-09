@@ -12,6 +12,7 @@ const server = http.createServer((req, res) => {
     res.end();
     return;
   }
+  const users = [];
 
   if (req.method === "POST") {
     let body = "";
@@ -22,14 +23,14 @@ const server = http.createServer((req, res) => {
 
     req.on("end", () => {
       const parsedData = JSON.parse(body); // Convert JSON string to an object
-      console.log("Received message:", parsedData.message);
+      console.log("username is :", parsedData.username);
 
       res.writeHead(200, { "Content-Type": "application/json" });
       res.end(
         JSON.stringify({
           status: "success",
-          message: "Message received! DONE.",
-          msgValue: parsedData.message,
+          message: "new user added ",
+          msgValue: parsedData.username,
         })
       );
     });
