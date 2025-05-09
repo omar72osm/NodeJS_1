@@ -12,10 +12,27 @@ const server = http.createServer((req, res) => {
     res.end();
     return;
   }
+  let body = "";
   const users = [];
 
-  if (req.method === "POST") {
-    let body = "";
+  if (req.url === "/" && req.method === "POST") {
+    console.log("url is :  / ");
+
+    req.on("data", (chunk) => {
+      body += chunk; // Collecting request data chunks
+    });
+    req.on("end", () => {
+      res.writeHead(200, { "Content-Type": "application/json" });
+      res.end(
+        JSON.stringify({
+          status: "success",
+          message: "new user added is : ",
+          msgValue: "no one",
+        })
+      );
+    });
+  } else if (req.url === "/users" && req.method === "POST") {
+    // let body = "";
 
     req.on("data", (chunk) => {
       body += chunk; // Collecting request data chunks
@@ -24,12 +41,12 @@ const server = http.createServer((req, res) => {
     req.on("end", () => {
       const parsedData = JSON.parse(body); // Convert JSON string to an object
       console.log("username is :", parsedData.username);
-
+      users.push(parsedData.username);
       res.writeHead(200, { "Content-Type": "application/json" });
       res.end(
         JSON.stringify({
           status: "success",
-          message: "new user added ",
+          message: "new user added is ",
           msgValue: parsedData.username,
         })
       );
