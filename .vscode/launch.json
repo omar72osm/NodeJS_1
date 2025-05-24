@@ -9,8 +9,8 @@
       "request": "launch",
       "name": "Launch Program",
       "skipFiles": ["<node_internals>/**"],
-      "program": "${workspaceFolder}\\route.js",
-      "console": "integratedTerminal"
+      //"program": "${workspaceFolder}\\app.js"
+      "program": "${workspaceFolder}\\nodeApp.js"
     }
   ]
 }
