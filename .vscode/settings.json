@@ -1,4 +1,7 @@
 {
   "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "debug.hideLauncherWhileDebugging": false,
+  "debug.showSubSessionsInToolBar": true,
+  "debug.showInStatusBar": "always"
 }
