@@ -39,6 +39,7 @@ const requestHandler = (req, res) => {
     req.on('end', () => {
       const parsedData = JSON.parse(body); // Convert JSON string to an object
       console.log('username is :', parsedData.username);
+
       users.push(parsedData.username);
       res.writeHead(200, { 'Content-Type': 'application/json' });
       res.end(
